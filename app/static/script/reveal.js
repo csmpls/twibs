@@ -2637,7 +2637,7 @@ var Reveal = (function(){
 	function onUserInput( event ) {
 
 		if( config.autoSlideStoppable ) {
-			pauseAutoSlide();
+			//pauseAutoSlide();
 		}
 
 	}
@@ -3285,6 +3285,14 @@ var Reveal = (function(){
 
 		// Returns the indices of the current, or specified, slide
 		getIndices: getIndices,
+
+		getSpeed: function() {
+			return config.autoSlide;
+		},
+
+		changeSpeedBy: function(delta) {
+			config.autoSlide = config.autoSlide + delta;
+		},
 
 		// Returns the slide at the specified index, y is optional
 		getSlide: function( x, y ) {

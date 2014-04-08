@@ -5,66 +5,23 @@ controls: false,
 progress: true,
 history: false,
 center: true,
-//autoSlide: 5000,
+autoSlide: 3000,
 keyboard: true,
 //loop: true,
 
-theme: Reveal.getQueryHash().theme || 'serif', // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+theme: Reveal.getQueryHash().theme || 'simple', // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
 });
 
 // set keyboard shortcuts
-KeyboardJS.on('e', function() { note('e'); checkIfEndOfFeed(); favorites(Reveal.getCurrentSlide()) }, null)
-KeyboardJS.on('w', function() { note('w'); checkIfEndOfFeed(); retweet(Reveal.getCurrentSlide()) }, null)
-KeyboardJS.on('q', function() { note('q'); checkIfEndOfFeed(); interestedIn(Reveal.getCurrentSlide()) }, null)
-KeyboardJS.on('1', function() { note('1'); checkIfEndOfFeed(); skip(Reveal.getCurrentSlide()) }, null)
-KeyboardJS.on('left', function() { note('left'); checkIfEndOfFeed() }, null)
-KeyboardJS.on('right', function() { note('right'); checkIfEndOfFeed() }, null)
+KeyboardJS.on('e', function() { note('e'); checkIfEndOfFeed(); interestedIn(Reveal.getCurrentSlide()) }, null)
+KeyboardJS.on('l', function() { note('1'); checkIfEndOfFeed(); skip(Reveal.getCurrentSlide()) }, null)
+KeyboardJS.on('dash', function() { Reveal.changeSpeedBy(-300); console.log(Reveal.getSpeed()) }, null)
+KeyboardJS.on('plus', function() { Reveal.changeSpeedBy(300); console.log(Reveal.getSpeed()) }, null)
+//KeyboardJS.on('left', function() { note('left'); checkIfEndOfFeed() }, null)
+//KeyboardJS.on('right', function() { note('right'); checkIfEndOfFeed() }, null)
 
-// TODO: feedback
-// TODO: keylog
 // TODO: test queue functionality
-
-// we open this queue after user is down browsing
-function favorites(slide) {
-	if ($(slide).attr('id')) {
-		$.ajax({
-			type: 'POST',
-			url: '/favorites',
-			contentType: 'application/json',
-			dataType:'json',
-			data: JSON.stringify({id: $(slide).attr('id') }) ,
-				success: function(data) {
-				}
-		})
-
-		// add favorite marker
-		addMarker($(slide), 'f');
-
-		// go to the next slide after 300 ms delay
-		setTimeout(Reveal.right,300)
-	}
-}
-
-function retweet(slide) {
-	if ($(slide).attr('id')) {
-		$.ajax({
-			type: 'POST',
-			url: '/retweet',
-			contentType: 'application/json',
-			dataType:'json',
-			data: JSON.stringify({id: $(slide).attr('id') }) ,
-				success: function(data) {
-				}
-		})
-
-		// add retweet marker
-		addMarker($(slide), 'r');
-
-		// go to the next slide after 300 ms delay
-		setTimeout(Reveal.right,300)
-	} 
-}
 
 var read_queue = []
 
@@ -75,7 +32,7 @@ function interestedIn(slide) {
 	// check if we're done
 	checkIfEndOfFeed()
 
-	queue(slide);
+	queue(slide)
 
 }
 
