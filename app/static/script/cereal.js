@@ -16,10 +16,10 @@ transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/
 // set keyboard shortcuts
 KeyboardJS.on('e', function() { note('e'); checkIfEndOfFeed(); interestedIn(Reveal.getCurrentSlide()) }, null)
 KeyboardJS.on('l', function() { note('1'); checkIfEndOfFeed(); skip(Reveal.getCurrentSlide()) }, null)
-KeyboardJS.on('dash', function() { Reveal.changeSpeedBy(-300); console.log(Reveal.getSpeed()) }, null)
-KeyboardJS.on('plus', function() { Reveal.changeSpeedBy(300); console.log(Reveal.getSpeed()) }, null)
-//KeyboardJS.on('left', function() { note('left'); checkIfEndOfFeed() }, null)
-//KeyboardJS.on('right', function() { note('right'); checkIfEndOfFeed() }, null)
+KeyboardJS.on('num4', function() { note('e'); checkIfEndOfFeed(); interestedIn(Reveal.getCurrentSlide()) }, null)
+KeyboardJS.on('num6', function() { note('l'); checkIfEndOfFeed(); skip(Reveal.getCurrentSlide()) }, null)
+KeyboardJS.on('dash', function() { Reveal.changeSpeedBy(-200); displaySpeed(Reveal.getSpeed()) }, null)
+KeyboardJS.on('plus', function() { Reveal.changeSpeedBy(200); displaySpeed(Reveal.getSpeed()) }, null)
 
 // TODO: test queue functionality
 
@@ -140,6 +140,10 @@ function checkIfEndOfFeed() {
 		})
 	}
 
+}
+
+function displaySpeed(speed) {
+	$('#speed').html(speed);
 }
 
 
