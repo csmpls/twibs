@@ -77,9 +77,11 @@ def done():
     # these are the IDs of all queued tweets
     tweet_ids = request.json['tweet_ids']
 
-    tweets=[{'content': {'html':'experimental twitter reader a1 (twibs)'}}]
+    tweets=[]
     for tweet_id in tweet_ids:
-        tweets.append({'content': tweet_id})
+        id = tweet_id['tweet_id']
+        print id 
+        tweets.append(id)
 
     # get the log and save it
     log = request.json

@@ -1,10 +1,17 @@
 {% if tweets: %}
 
-	{% for tweet in tweets: %}
-		{{tweet}} <p>
+	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+	{% for tweet_id in tweets: %}
+
+		<blockquote class="twitter-tweet"><a href="http://twitter.com/twitter/status/{{tweet_id}}">link</a></blockquote>
+		
 	{% endfor %}
 
+	<script>
+		twttr.widgets.load()
+	</script>
+
 {% else: %}
-<img src="https://pbs.twimg.com/profile_images/413789063447994368/TP8sR7Z1.jpeg"><p>
-	you didnt like anything? :(
+	<img src="https://pbs.twimg.com/profile_images/413789063447994368/TP8sR7Z1.jpeg"><p> you didnt like anything? :(
 {% endif %}
