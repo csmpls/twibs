@@ -83,10 +83,10 @@ def done():
         tweets.append({'content': embed_tweet(id),'id': id})
 
     # get the log and save it
-    log = request.json
-    title = datetime.now().strftime("%d-%m-%y_%H:%M")
-    with open('logs/'+str(title)+'.json', 'w') as outfile:
-        json.dump(log, outfile)
+    # log = request.json
+    # title = datetime.now().strftime("%d-%m-%y_%H:%M")
+    # with open('logs/'+str(title)+'.json', 'w') as outfile:
+    #     json.dump(log, outfile)
 
 
     return jsonify(html=render_template('review.html', tweets=tweets))
