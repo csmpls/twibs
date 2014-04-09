@@ -1,10 +1,10 @@
-
+<div class = "reveal">
 {% if tweets: %}
 
 
 	{% for tweet in tweets: %}
 
-		<p>{{tweet.content.html|safe}}</p>
+		{{tweet.content.html|safe}}
 
 	{% endfor %}
 
@@ -16,3 +16,5 @@
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>

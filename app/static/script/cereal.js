@@ -10,12 +10,13 @@ keyboard: false,
 //loop: true,
 
 theme: Reveal.getQueryHash().theme || 'simple', // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 });
 
 // set keyboard shortcuts
 KeyboardJS.on('e', function() { note('e'); checkIfEndOfFeed(); interestedIn(Reveal.getCurrentSlide()) }, null)
 KeyboardJS.on('l', function() { note('1'); checkIfEndOfFeed(); skip(Reveal.getCurrentSlide()) }, null)
+KeyboardJS.on('h', function() { note('h'); Reveal.left() }, null)
 KeyboardJS.on('num4', function() { note('e'); checkIfEndOfFeed(); interestedIn(Reveal.getCurrentSlide()) }, null)
 KeyboardJS.on('num6', function() { note('l'); checkIfEndOfFeed(); skip(Reveal.getCurrentSlide()) }, null)
 KeyboardJS.on('dash', function() { Reveal.changeSpeedBy(-200); displaySpeed(Reveal.getSpeed()) }, null)
