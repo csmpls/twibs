@@ -5,12 +5,12 @@ controls: false,
 progress: true,
 history: false,
 center: true,
-autoSlide: 3000,
-keyboard: true,
+autoSlide: 5000,
+keyboard: false,
 //loop: true,
 
 theme: Reveal.getQueryHash().theme || 'simple', // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 });
 
 // set keyboard shortcuts
@@ -74,13 +74,13 @@ function queue(slide) {
 
 	// we keep post url in id of <section> tag
 	var tweet_id = main_slide.attr('id') 
-	console.log(tweet_id)
+	var oembed = main_slide.html()
 
 	if (!hasInterestMarker(main_slide)) {
 
 	  	// add url to queue as a json object
 	  	read_queue.push({
-	  		tweet_id:tweet_id
+	  		tweet_id:tweet_id,
 	  	})
 
 	  	// add visual feedback to the slide to mark interest
@@ -133,7 +133,7 @@ function checkIfEndOfFeed() {
 			url: '/done',
 			contentType: 'application/json',
 			dataType:'json',
-			data: JSON.stringify({tweet_ids: read_queue, log:keylog}),
+			data: JSON.stringify({tweets: read_queue, log:keylog}),
 			success: function(data) {
 				document.body.innerHTML = data.html
 			}

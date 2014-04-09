@@ -1,17 +1,18 @@
+
 {% if tweets: %}
 
-	<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
-	{% for tweet_id in tweets: %}
+	{% for tweet in tweets: %}
 
-		<blockquote class="twitter-tweet"><a href="http://twitter.com/twitter/status/{{tweet_id}}">link</a></blockquote>
-		
+		<p>{{tweet.content.html|safe}}</p>
+
 	{% endfor %}
 
-	<script>
-		twttr.widgets.load()
-	</script>
 
 {% else: %}
 	<img src="https://pbs.twimg.com/profile_images/413789063447994368/TP8sR7Z1.jpeg"><p> you didnt like anything? :(
 {% endif %}
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

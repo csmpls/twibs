@@ -75,13 +75,12 @@ def logout():
 @app.route('/done', methods=['POST'])
 def done():
     # these are the IDs of all queued tweets
-    tweet_ids = request.json['tweet_ids']
+    post_json = request.json['tweets']
 
     tweets=[]
-    for tweet_id in tweet_ids:
-        id = tweet_id['tweet_id']
-        print id 
-        tweets.append(id)
+    for tweet in post_json:
+        id = tweet['tweet_id']
+        tweets.append({'content': embed_tweet(id),'id': id})
 
     # get the log and save it
     log = request.json
@@ -104,7 +103,7 @@ def favorites():
     return jsonify({'html':'resp'}) 
 
 def embed_tweet(id):
-        resp = twitter.get('statuses/oembed.json?id='+str(id)+'&omit_script=true&align=center&maxwidth=550')
+        resp = twitter.get('statuses/oembed.json?id='+str(id)+'&omit_script=true&align=center&maxwidth=660')
         return resp.data
 
 
