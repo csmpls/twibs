@@ -4,7 +4,7 @@ Reveal.initialize({
 controls: false,
 progress: true,
 history: false,
-center: true,
+center: false,
 autoSlide: 5000,
 keyboard: false,
 //loop: true,

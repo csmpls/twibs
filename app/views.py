@@ -33,10 +33,10 @@ def before_request():
 def index():
     if 'twitter_user' in session:
         tweets=[{'content': {'html':'experimental twitter reader a1 (twibs)'} ,'id':0}]
-        posts=twitter.get('statuses/home_timeline.json', data={'count':50})
+        posts=twitter.get('statuses/home_timeline.json', data={'count':10})
         if posts.data:
             for tweet in posts.data:
-                tweets.append({'content': embed_tweet(tweet['id']),'id': tweet['id']})
+                tweets.append({'content': embed_tweet(tweet['id']),'id': tweet['id'], 'screen_name':tweet['user']['screen_name']})
             return render_template("index.html",tweets=tweets)
 
         

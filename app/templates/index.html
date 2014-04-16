@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="static/css/reveal.min.css">
-		<link rel="stylesheet" href="static/css/theme/serif.css">
+		<link rel="stylesheet" href="static/css/theme/simple.css">
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -31,7 +31,8 @@
 
 			  		{%for tweet in tweets: %}
 							<section id="{{tweet.id}}">
-							  	{{tweet.content.html|safe}}
+								<div class="gazebar">{{tweet.screen_name}}</div>
+							  	<div class="embed">{{tweet.content.html|safe}}</div>
 							</section>
 
 					{% endfor %}
